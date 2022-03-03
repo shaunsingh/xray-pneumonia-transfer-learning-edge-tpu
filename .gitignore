@@ -1,3 +1,7 @@
+# extra datasets not needed for testing
+chest_xray/train/
+chest_xray/test/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
