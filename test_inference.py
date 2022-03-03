@@ -23,7 +23,7 @@ print(f"Total number of Images : {len(images)}")
 def evaluate_timing():
     total_time = 0
     try:
-        interpreter = tflite.Interpreter(model_path = WEIGHT_PATH,experimental_delegates=[tflite.load_delegate('libedgetpu.so.1')])
+        interpreter = tflite.Interpreter(model_path = WEIGHT_PATH,experimental_delegates=[tflite.load_delegate('libedgetpu.so.1.0')])
     except Exception as ex:
         interpreter = tf.lite.Interpreter(model_path = WEIGHT_PATH)
     interpreter.allocate_tensors()
