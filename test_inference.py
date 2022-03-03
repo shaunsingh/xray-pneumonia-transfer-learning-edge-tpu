@@ -17,7 +17,7 @@ IMAGE_PATH = os.path.abspath('chest_xray/val/*/*')
 #Change this while evaluating other models.
 WEIGHT_PATH = os.path.abspath('xray_mobilenetv2_quant_model_edgetpu.tflite')
 
-images = sorted(glob2.glob(IMAGE_PATH + '/*.jpeg'))
+images = sorted(glob2.glob(IMAGE_PATH))
 print(f"Total number of Images : {len(images)}")
 
 def evaluate_timing():
