@@ -30,6 +30,8 @@ def evaluate_timing():
     input_details = interpreter.get_input_details()[0]
     output_details = interpreter.get_output_details()
     
+    prediction_op = dict()
+    
     for _, img_item in enumerate(images):
         img = cv2.imread(img_item)
         img = cv2.resize(img, (224, 224)) / 255
@@ -38,12 +40,19 @@ def evaluate_timing():
         start_time = time.perf_counter()
         interpreter.invoke()
         output_data = interpreter.get_tensor(output_details[0]['index'])
+        prediction_op[img_item] = output_data.tolist()
         end_time = time.perf_counter()
         time_taken = end_time - start_time
         total_time += time_taken
 
     print(f"Total Time taken : {total_time} seconds.")
     print(f"Average Time Taken : {total_time / len(images)} seconds")
+    
+    print(prediction_op)
+    
+    #Save the Predictions in File.
+    with open('prediction.json', 'w') as op:
+        json.dump(prediction_op, op)
 
 if __name__ == "__main__":
     evaluate_timing()
