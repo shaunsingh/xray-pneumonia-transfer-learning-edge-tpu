@@ -38,7 +38,6 @@ def evaluate_timing():
         start_time = time.perf_counter()
         interpreter.invoke()
         output_data = interpreter.get_tensor(output_details[0]['index'])
-        prediction_op[img_item] = output_data.tolist()
         end_time = time.perf_counter()
         time_taken = end_time - start_time
         total_time += time_taken
